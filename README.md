@@ -1,14 +1,11 @@
-# cl-crypto-random
+# Crypto Random
 
-Cryptographic random byte generation for Common Lisp.
+Cryptographic functions and utilities for secure operations.
 
 ## Features
 
-- Platform-aware random source selection
-- Uses /dev/urandom on Unix-like systems
-- Uniform distribution via rejection sampling
-- Convenience functions for keys and nonces
-- Zero external dependencies
+- Core functionality implementation
+- Pure Common Lisp (zero external dependencies)
 
 ## Installation
 
@@ -19,42 +16,24 @@ Cryptographic random byte generation for Common Lisp.
 ## Usage
 
 ```lisp
-(use-package :cl-crypto-random)
+;; Example usage
+(main-function)
+```
 
-;; Generate random bytes
-(crypto-random-bytes 32)  ; 32 random bytes
+## Testing
 
-;; Generate random integer in range
-(crypto-random-integer 1000000)  ; [0, 999999]
-
-;; Generate cryptographic key
-(generate-key 32)   ; 256-bit key
-(generate-key 16)   ; 128-bit key
-
-;; Generate nonce
-(generate-nonce 12)  ; 96-bit nonce (AES-GCM)
-(generate-nonce 24)  ; 192-bit nonce (XChaCha20)
+```lisp
+(asdf:test-system :cl-crypto-random)
 ```
 
 ## API
 
-- `crypto-random-bytes n` - Generate N random bytes
-- `crypto-random-integer limit` - Random integer in [0, limit)
-- `generate-key size` - Generate cryptographic key
-- `generate-nonce size` - Generate cryptographic nonce
-
-## Platform Support
-
-- **Unix/Linux/macOS**: Uses /dev/urandom
-- **Windows**: Falls back to SBCL random state (seeded from system)
-- **Other**: CL random with time-based seeding (less secure)
-
-## Security Notes
-
-- Always prefer /dev/urandom platforms for cryptographic use
-- The fallback random source may not be cryptographically secure
-- For production use on Windows, consider native crypto API integration
+- `main-function - Primary function for core functionality`
 
 ## License
 
-BSD-3-Clause. Copyright (c) 2024-2026 Parkian Company LLC
+BSD-3-Clause License - See LICENSE file for details.
+
+---
+Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause
